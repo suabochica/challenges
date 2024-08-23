@@ -1,0 +1,30 @@
+{
+  "name": "meli-challenge",
+  "version": "1.0.0",
+  "description": "attend meli backend challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suabochica/meli-challenge",
+    "keywords": [],
+    "author": "Sergio Benitez",
+    "license": "ISC",
+    "bugs": {
+      "url": "git+https://github.com/suabochica/meli-challenge/issues"
+    },
+    "homepage": "git+https://github.com/suabochica/meli-challenge#readme",
+    "devDependencies": {
+      "standard": "17.0.0"
+    },
+    "eslintConfig": {
+      "extends": "./node_modules/standard/eslintrc.json"
+    }
+  },
+  "keywords": [],
+  "author": "Sergio Benitez",
+  "license": "ISC"
+}
