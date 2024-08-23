@@ -1,0 +1,28 @@
+{
+  "name": "meli-request",
+  "version": "1.0.0",
+  "description": "Meli Request",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "ts-node src/main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "ts-node db/migrate.ts"
+  },
+  "author": "Sergio Benítez",
+  "license": "ISC",
+  "dependencies": {
+    "effect": "3.6.5",
+    "@effect/schema": "0.71.1",
+    "@effect/sql": "0.9.4",
+    "@effect/sql-pg": "0.9.4",
+    "@effect/platform": "0.62.2",
+    "@effect/platform-node": "0.57.2"
+  },
+  "devDependencies": {
+    "typescript": "5.5.4",
+    "ts-node": "10.9.2",
+    "@types/node": "22.5.0"
+
+  }
+}
+
