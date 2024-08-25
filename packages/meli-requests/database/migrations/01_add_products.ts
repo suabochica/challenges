@@ -1,8 +1,8 @@
-import * as Effect from "effect/Effect"
-import * as Sql from "@effect/sql-pg"
+import { Effect } from "effect"
+import { SqlClient } from "@effect/sql"
 
 export default Effect.flatMap(
-  Sql.client.PgClient,
+  SqlClient.SqlClient,
   (sql) => sql `
     CREATE TABLE IF NOT EXIST products (
       id VARCHAR(128) NOT NULL,

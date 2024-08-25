@@ -1,22 +1,17 @@
+import { Effect, pipe } from "effect";
+import { NodeRuntime } from "@effect/platform-node";
 
-import { HttpRouter, HttpServer, HttpServerResponse } from "@effect/platform"
-import { NodeHttpServer, NodeRuntime } from "@effect/platform-node"
-import { Layer } from "effect"
-import { createServer } from "node:http"
+import { SqlLive } from "./adapters/pg.adapter";
+import { ApiAdapter } from "./adapters/api.adapter";
 
-// Define the router with a single route for the root URL
-const router = HttpRouter.empty.pipe(
-  HttpRouter.get("/", HttpServerResponse.text("Hello World"))
-)
+const program = Effect.gen(function* () {
+});
 
-// Set up the application server with logging
-const app = router.pipe(HttpServer.serve(), HttpServer.withLogAddress)
-
-// Specify the port
-const port = 3000
-
-// Create a server layer with the specified port
-const ServerLive = NodeHttpServer.layer(() => createServer(), { port })
-
-// Run the application
-NodeRuntime.runMain(Layer.launch(Layer.provide(app, ServerLive)))
+pipe(
+  program,
+  Effect.provide(
+    // ApiAdapter.Live,
+    SqlLive,
+  ),
+  NodeRuntime.runMain
+);

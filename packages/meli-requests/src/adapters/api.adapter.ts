@@ -1,38 +1,72 @@
-import { Effect } from "effect"
-import { Category, Currency, Item, User, GetItemError, GetCategoryError, GetCurrencyError, GetUserError } from "../models"
+import { Effect, Layer, Context } from "effect";
+import {
+  Category,
+  Currency,
+  Item,
+  User,
+  GetItemError,
+  GetCategoryError,
+  GetCurrencyError,
+  GetUserError,
+} from "../models";
 
-export const getFileData = (en) => {
-  //TO DO
+const API_HOST_URL = "https://api.mercadolibre.com";
+
+export declare namespace ApiAdapter {
+  type Shape = {
+    getItem: (itemId: string) => Effect.Effect<string, GetItemError>;
+    getCategoryName: (
+      categoryId: string
+    ) => Effect.Effect<string, GetCategoryError>;
+    getCurrencyDescription: (
+      currencyId: string
+    ) => Effect.Effect<string, GetCurrencyError>;
+    getUserNickname: (userId: number) => Effect.Effect<string, GetUserError>;
+  };
 }
 
-export const getItem = (id: number) =>
-  Effect.tryPromise({
-    try: () =>
-      fetch(`https://api.example.com/items?ids=${id}`)
-      .then(response => response.json() as Promise<typeof Item>),
-    catch: () => new GetItemError()
-  })
+export class ApiAdapter extends Context.Tag("@adapters/ApiAdapter")<
+  ApiAdapter,
+  ApiAdapter.Shape
+>() {
+  static Live = Layer.succeed(
+    ApiAdapter,
+    ApiAdapter.of({
+      getItem: (itemId: string) =>
+        Effect.tryPromise({
+          try: () =>
+            fetch(`${API_HOST_URL}/items?ids=${itemId}`).then(
+              (response) => response.json()
+            ),
+          catch: () => new GetItemError(),
+        }),
 
-export const getCategoryName = (id: number) =>
-  Effect.tryPromise({
-    try: () =>
-      fetch(`https://api.example.com/categories/${id}`)
-      .then(response => response.json() as Promise<typeof Category>),
-    catch: () => new GetCategoryError()
-  })
+      getCategoryName: (categoryId: string) =>
+        Effect.tryPromise({
+          try: () =>
+            fetch(`${API_HOST_URL}/categories/${categoryId}`).then(
+              (response) => response.json()
+            ),
+          catch: () => new GetCategoryError(),
+        }),
 
-export const getCurrencyyDescription = (id: number) =>
-  Effect.tryPromise({
-    try: () =>
-      fetch(`https://api.example.com/currencies/${id}`)
-      .then(response => response.json() as Promise<typeof Currency>),
-    catch: () => new GetCurrencyError()
-  })
+      getCurrencyDescription: (currencyId: string) =>
+        Effect.tryPromise({
+          try: () =>
+            fetch(`${API_HOST_URL}/currencies/${currencyId}`).then(
+              (response) => response.json()
+            ),
+          catch: () => new GetCurrencyError(),
+        }),
 
-export const getUserNickname = (id: number) =>
-  Effect.tryPromise({
-    try: () =>
-      fetch(`https://api.example.com/users/${id}`)
-      .then(response => response.json() as Promise<typeof User>),
-    catch: () => new GetUserError()
-  })
+      getUserNickname: (userId: number) =>
+        Effect.tryPromise({
+          try: () =>
+            fetch(`${API_HOST_URL}/users/${userId}`).then(
+              (response) => response.json()
+            ),
+          catch: () => new GetUserError(),
+        }),
+    })
+  );
+}
