@@ -6,7 +6,7 @@ export declare namespace HealthAdapter {
   };
 }
 
-export class HealthAdapter extends Context.Tag("@adapters/Health")<
+export class HealthAdapter extends Context.Tag("@adapters/HealthAdapter")<
   HealthAdapter,
   HealthAdapter.Shape
 >() {

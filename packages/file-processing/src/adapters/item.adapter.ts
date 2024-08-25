@@ -1,6 +1,6 @@
 import { Context, Effect, Layer, Option, pipe } from "effect";
 import { Item } from "../models/item.model";
-import { FileAdapter, IOError } from "./file.adapter";
+import { RecordAdapter, IOError } from "./record.adapter";
 
 export declare namespace ItemAdapter {
   type Shape = {
@@ -15,12 +15,12 @@ export class ItemAdapter extends Context.Tag("@adapters/ItemAdapter")<
   static FromFile = Layer.effect(
     ItemAdapter,
     Effect.gen(function* (_) {
-      const fileAdapter = yield* _(FileAdapter);
+      const recordAdapter = yield* _(RecordAdapter);
 
       return ItemAdapter.of({
         getItemById(id) {
           return pipe(
-            fileAdapter.read("items"),
+            recordAdapter.readRecord("items"),
             Effect.map((items) => JSON.parse(items) as Record<string, Item>),
             Effect.flatMap((itemRecord) => Option.fromNullable(itemRecord[id])),
             Effect.catchTag(

@@ -1,40 +1,35 @@
 import { Context, Data, Effect, Layer } from "effect";
+import { FileSystem } from "@effect/platform"
 
 export class IOError extends Data.TaggedError("IOError")<{ which: unknown }> {}
 
 export declare namespace FileAdapter {
   type Shape = {
-    read: (file: string) => Effect.Effect<string, IOError>;
+    readFileSystem: (file: string) => Effect.Effect<void, IOError>;
   };
 }
-
-const files: Record<string, string> = {
-  items: JSON.stringify({
-    0: {
-      id: "750925229",
-      site: "MLA",
-    },
-  }),
-};
 
 export class FileAdapter extends Context.Tag("@adapters/FileAdapter")<
   FileAdapter,
   FileAdapter.Shape
 >() {
-  static InMemory = Layer.succeed(
+  static InMemory = Layer.effect(
     FileAdapter,
-    FileAdapter.of({
-      read(file) {
-        return Effect.tryPromise({
-          try: () => {
-            if (files[file]) {
-              return Promise.resolve(files[file]);
-            }
-            return Promise.reject(new Error("File not found"));
-          },
-          catch: (which) => new IOError({ which }),
-        });
-      },
+    Effect.gen(function* (_) {
+      const fs = yield* _(FileSystem.FileSystem);
+
+      return FileAdapter.of({
+        readFileSystem(filepath) {
+          return Effect.tryPromise({
+            try: () => {
+              const content = fs.readFileString(filepath, "utf8")
+              console.log(content)
+              return Promise.resolve(content);
+            },
+            catch: (which) => new IOError({ which })
+          });
+        },
+      });
     })
   );
 }
