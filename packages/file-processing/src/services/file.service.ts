@@ -8,8 +8,8 @@ export class NotFound extends TaggedHttpError("NotFound", StatusCode(404)) {}
 
 export declare namespace FileService {
   type Shape = {
-    processFile(filename: string): Effect.Effect<void, NotFound>;
-    getFilePath(filename: string): void;
+    // processFile(filename: string): Effect.Effect<void, NotFound>;
+    getFilePath(): Effect.Effect<void, NotFound>;
   };
 }
 
@@ -23,15 +23,19 @@ export class FileService extends Context.Tag("@services/FileService")<
       const adapter = yield* _(FileAdapter);
 
       return FileService.of({
-        processFile(filename) {
+        // processFile(filename) {
+        //   return pipe(
+        //     adapter.readFileSystem(filename),
+        //     Effect.mapError(() => new NotFound())
+        //   );
+        // },
+
+        getFilePath() {
           return pipe(
-            adapter.readFileSystem(filename),
+            adapter.getFilePath(),
             Effect.mapError(() => new NotFound())
-          );
-        },
-
-        getFilePath(filename) {}
-
+          )
+        }
       });
     })
   );

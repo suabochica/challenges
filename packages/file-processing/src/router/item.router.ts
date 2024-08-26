@@ -1,8 +1,10 @@
 import { Effect, Express, pipe } from "../support/express";
 import { ItemService } from "../services/item.service";
 
+import { loggerMiddleware } from "../support/logs";
+
 const getItemByIdGen = Express.gen(function* (_) {
-  const { request, response } = yield* _(Express.RouteContext("/item/:id"));
+  const { request, response } = yield* _(Express.RouteContext("/:id"));
   const service = yield* _(ItemService);
 
   return yield* _(
@@ -41,14 +43,6 @@ const getItemByIdPipe = pipe(
   }),
   Effect.either
 );
-
-const loggerMiddleware = Express.gen(function* (_) {
-  const { request, next } = yield* _(Express.DefaultContext);
-  const { method, path } = request;
-
-  yield* _(Effect.log(`${method} ${path}`));
-  yield* _(Effect.sync(next));
-});
 
 const router = pipe(
   Express.makeRouter(),
