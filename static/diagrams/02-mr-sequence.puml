@@ -1,0 +1,12 @@
+@startuml mr-sequence
+
+participant Main as Main
+participant Service as Service
+participant Adapter as Adapter
+participant Model as Model
+
+Service -> Main : To router
+Adapter -> Service : To service
+Model -> Adapter : To adapter
+
+@enduml

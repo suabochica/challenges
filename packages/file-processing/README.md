@@ -18,6 +18,11 @@ Paquete que procesa un archivo `.csv`, recupera su contenido y lo expone a trav�
 - *models*: carpeta en donde se definen las unidades que juegan el rol de las entidades.
 - *router*: carpeta en donde se específican las rutas que vamos a exponer con express.
 - *services*: carpeta con los puntos de entrada del paquete (e.g., el archivo `.csv` y el `POST endpoint`)
+- *support*: carpeta con utilidaes transversales para el proyecto.
+
+La relación entre las carpetas se procura hacer en una secuencia como ilustra el siguiente diagrama:
+
+<!--[sequence](../../static/diagrams/01-sequence.puml)-->
 
 🔀 Endpoints
 ------------

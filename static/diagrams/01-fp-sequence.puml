@@ -1,0 +1,14 @@
+@startuml fp-sequence
+
+participant Main as Main
+participant Router as Router
+participant Service as Service
+participant Adapter as Adapter
+participant Model as Model
+
+Router -> Main : To main 
+Service -> Router : To router
+Adapter -> Service : To service
+Model -> Adapter : To adapter
+
+@enduml

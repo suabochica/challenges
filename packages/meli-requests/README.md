@@ -1,7 +1,7 @@
 🏣 MeLi Requests
 ================
 
-Paquete que consume la cola expuesta por el `file-processing`, utiliza los valores para enviar peticiones a las APIs públicas de mercado libre, recupera una información específica y almacenar esta información en un base de datos relacional.
+Paquete que consume la Cola expuesta por el `file-processing`, utiliza los valores para enviar peticiones a las APIs públicas de mercado libre, recupera una información específica y almacena esta información en un base de datos relacional.
 
 🧰 Tech Stack
 -------------
@@ -18,8 +18,10 @@ Paquete que consume la cola expuesta por el `file-processing`, utiliza los valor
 
 - *adapters*: carpeta con las implementaciones de las interfaces de los puntos de entrada.
 - *models*: carpeta en donde se definen las unidades que juegan el rol de las entidades.
-- *database*: carpeta en donde se específican las rutas que vamos a exponer con express.
-- *services*: carpeta con los puntos de entrada del paquete (e.g., el archivo `.csv` y el `POST endpoint`)
+- *database*: carpeta con el `init.sql` para crear la base de datos.
+- *services*: carpeta con los puntos de entrada del paquete (e.g., la cola, las APIs públicas de MeLi y la base de datos)
+
+<!--[mr-sequence](../../static/diagrams/02-mr-sequence.puml)-->
 
 🧞 Comandos
 -----------

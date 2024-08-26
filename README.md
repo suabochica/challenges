@@ -29,6 +29,6 @@ Este monorepo consta de los siguientes paquetes:
 
 El siguiente diagrama representa la comunicación entre los paquetes.
 
-![arquitectura](./imgs/00-arch.png)
+[![components](https://tinyurl.com/23yhno2u)]<!--![components](./static/diagrams/00-components.puml)-->
 
 En los archivos `README.md` de cada paquete se explica detalladamente las decisiones de arquitectura tomadas sobre el reto.

@@ -1,0 +1,22 @@
+@startuml component
+
+package "monorepo" {
+  [file-processing]
+  [meli-request]
+}
+
+.csv -> [file-processing]
+[file-processing] ..> Queue: push
+[meli-request] ..> Queue : take
+[meli-request] ..> [meli-apis] : request
+
+
+database "Postgres" {
+  frame "melidb" {
+    [products]
+  }
+}
+
+[meli-request] -> [products] : saves
+
+@enduml
