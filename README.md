@@ -8,8 +8,8 @@ Monorepo con una solución al reto backend de mercado libre.
 🧰 Tech Stack
 -------------
 
-- nodejs
-- docker
+- nodejs v18.0.0
+- docker 
 - docker compose
 
 🚀 Despliegue
@@ -30,3 +30,5 @@ Este monorepo consta de los siguientes paquetes:
 El siguiente diagrama representa la comunicación entre los paquetes.
 
 ![arquitectura](./imgs/00-arch.png)
+
+En los archivos `README.md` de cada paquete se explica detalladamente las decisiones de arquitectura tomadas sobre el reto.
