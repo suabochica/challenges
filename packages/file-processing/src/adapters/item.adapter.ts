@@ -12,7 +12,7 @@ export class ItemAdapter extends Context.Tag("@adapters/ItemAdapter")<
   ItemAdapter,
   ItemAdapter.Shape
 >() {
-  static FromFile = Layer.effect(
+  static Live = Layer.effect(
     ItemAdapter,
     Effect.gen(function* (_) {
       const recordAdapter = yield* _(RecordAdapter);

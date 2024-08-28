@@ -1,5 +1,18 @@
 import { Context, Data, Effect, Layer } from "effect";
 
+const files: Record<string, string> = {
+  items: JSON.stringify({
+    0: {
+      id: "750925229",
+      site: "MLA",
+    },
+    1: {
+      id: "750925239",
+      site: "MLA",
+    },
+  }),
+};
+
 export class IOError extends Data.TaggedError("IOError")<{ which: unknown }> {}
 
 export declare namespace RecordAdapter {
@@ -7,15 +20,6 @@ export declare namespace RecordAdapter {
     readRecord: (file: string) => Effect.Effect<string, IOError>;
   };
 }
-
-const files: Record<string, string> = {
-  items: JSON.stringify({
-    0: {
-      id: "750925229",
-      site: "MLA",
-    },
-  }),
-};
 
 export class RecordAdapter extends Context.Tag("@adapters/RecordAdapter")<
   RecordAdapter,

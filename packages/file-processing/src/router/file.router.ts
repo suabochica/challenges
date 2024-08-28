@@ -8,7 +8,7 @@ const getFile = Express.gen(function* (_) {
   const service = yield* _(FileService);
 
   return yield* _(
-    service.getFilePath(),
+    service.getFileCheckpoint(),
     Effect.match({
       onSuccess(value) {
         response.status(200);
@@ -27,7 +27,7 @@ const uploadFile = Express.gen(function* (_) {
   const service = yield* _(FileService);
 
   return yield* _(
-    service.getFilePath(),
+    service.uploadFile(request.body),
     Effect.match({
       onSuccess(value) {
         response.status(200);
