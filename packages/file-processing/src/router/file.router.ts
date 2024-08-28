@@ -27,7 +27,7 @@ const uploadFile = Express.gen(function* (_) {
   const service = yield* _(FileService);
 
   return yield* _(
-    service.uploadFile(request.body),
+    service.uploadFile(),
     Effect.match({
       onSuccess(value) {
         response.status(200);

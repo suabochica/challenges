@@ -1,4 +1,5 @@
 .vscode
 node_modules
+package/file-processing/uploads
 package/file-processing/node_modules
 package/meli-requests/node_modules

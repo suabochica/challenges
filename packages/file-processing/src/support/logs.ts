@@ -1,4 +1,4 @@
-import { Effect, Express, pipe } from "../support/express";
+import { Effect, Express } from "../support/express";
 
 export const loggerMiddleware = Express.gen(function* (_) {
   const { request, next } = yield* _(Express.DefaultContext);
