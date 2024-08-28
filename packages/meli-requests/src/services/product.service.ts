@@ -1,6 +1,5 @@
 import { Context, Effect, Layer, pipe } from "effect";
-import { InsertProductSchema, Product } from "../models/product.model";
-import { SqlClient, SqlResolver } from "@effect/sql";
+import { ProductAdapter } from "../adapters/product.adapter";
 
 export declare namespace ProductService {
   type Shape = {
@@ -14,20 +13,13 @@ export class ProductService extends Context.Tag("@services/ProductService")<
   static Live = Layer.effect(
     ProductService,
     Effect.gen(function* (_) {
-      const sql = yield* SqlClient.SqlClient
+      const adapter = yield* _(ProductAdapter);
 
       return ProductService.of({
         insertProduct() {
-          SqlResolver.ordered("InsertProduct", {
-            Request: InsertProductSchema,
-            Result: Product,
-            execute: (requests) =>
-              sql`
-              INSERT INTO products
-              ${sql.insert(requests)}
-              RETURNING products.*
-            `
-          })
+          return pipe(
+            adapter.insertProduct(),
+          )
         },
       });
     })
