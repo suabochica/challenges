@@ -1,9 +1,5 @@
 import { Effect, Layer, Context } from "effect";
 import {
-  Category,
-  Currency,
-  Item,
-  User,
   GetItemError,
   GetCategoryError,
   GetCurrencyError,
@@ -14,14 +10,14 @@ const API_HOST_URL = "https://api.mercadolibre.com";
 
 export declare namespace ApiAdapter {
   type Shape = {
-    getItem: (itemId: string) => Effect.Effect<string, GetItemError>;
+    getItem: (itemId: string) => Effect.Effect<unknown, GetItemError>;
     getCategoryName: (
       categoryId: string
-    ) => Effect.Effect<string, GetCategoryError>;
+    ) => Effect.Effect<unknown, GetCategoryError>;
     getCurrencyDescription: (
       currencyId: string
-    ) => Effect.Effect<string, GetCurrencyError>;
-    getUserNickname: (userId: number) => Effect.Effect<string, GetUserError>;
+    ) => Effect.Effect<unknown, GetCurrencyError>;
+    getUserNickname: (userId: number) => Effect.Effect<unknown, GetUserError>;
   };
 }
 
