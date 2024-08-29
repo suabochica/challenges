@@ -1,47 +1,37 @@
-version: '3.1'
+networks:
+  meli:
+
 services:
-  db:
-    image: postgres:latest
+  postgres:
+    image: postgres
+    container_name: pg_container
     restart: always
     environment:
-      - POSTGRES_DATABASE=melidb
       - POSTGRES_USER=slbenitezd
       - POSTGRES_PASSWORD=b4ckendChallenge
+      - POSTGRES_DB=meli_db
     healthcheck:
       test: ["CMD-SHELL", 'pg_is_read']
       interval: 1s
       timeout: 5s
       retries: 10
     volumes:
-      - pgdata:/var/lib/postgresql/data
-      - ./meli-request/database/init.sql
+      - ./dataset/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-      - "8080:8080"
+      - "5432:5432"
+    networks:
+      - meli
 
-
-  file-processing:
-    image: file-processing
-    build:
-      context: file-processing
-      args:
-      - INPUT_FILEPATH:"/inputs"
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
     ports:
-      - "3333:3333"
-
-  meli-request:
-    image: meli-request
-    build:
-      context: meli-request
-      args:
-      - API_HOST="https://api.mercadolibre.com"
-      - POSTGRES_HOST="pg"
-      - POSTGRES_DATABASE="melidb"
-      - POSTGRES_USER="slbenitezd"
-      - POSTGRES_PASSWORD="b4ckendChallenge"
+      - "80:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@meli.com
+      PGADMIN_DEFAULT_PASSWORD: b4ckendChallenge
     depends_on:
-      - db:
-        condition: service_healthy
-
-  volumes:
-    pgdata:
-      driver: local
+      - postgres
+    networks:
+      - meli

@@ -5,6 +5,9 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "ts-node src/main.ts",
+    "dev:api": "ts-node src/main.api.ts",
+    "dev:db": "ts-node src/main.db.ts",
+    "dev:queue": "ts-node src/main.queue.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "ts-node db/migrate.ts"
   },
