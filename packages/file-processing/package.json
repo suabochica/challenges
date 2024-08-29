@@ -5,6 +5,7 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "ts-node src/main.ts",
+    "dev:reader": "ts-node src/main.reader.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Sergio Benítez",
