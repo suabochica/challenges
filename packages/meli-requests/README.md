@@ -21,7 +21,7 @@ Paquete que consume la Cola expuesta por el `file-processing`, utiliza los valor
 - *database*: carpeta con el `init.sql` para crear la base de datos.
 - *services*: carpeta con los puntos de entrada del paquete (e.g., la cola, las APIs públicas de MeLi y la base de datos)
 
-<!--[mr-sequence](../../static/diagrams/02-mr-sequence.puml)-->
+[![mr-sequence](https://tinyurl.com/2ace2x5p)](https://tinyurl.com/2ace2x5p)<!--![mr-sequence](../../static/diagrams/02-mr-sequence.puml)-->
 
 💊 Queue
 ---------

@@ -7,9 +7,13 @@ import { PgAdapter } from "./adapters/pg.adapter";
 const program = Effect.gen(function* () {
   const queueAdapter = yield* QueueAdapter
   const apiAdapter = yield* ApiAdapter
-  const PgAdapter = yield* PgAdapter
+  // const PgAdapter = yield* PgAdapter
 })
  
-const runnable = Effect.provide(program, QueueAdapter.Live, ApiAdapter.Live, PgAdapter.Live)
+const runnable = Effect.provide(program,
+  QueueAdapter.Live,
+  // ApiAdapter.Live,
+  // PgAdapter.Live
+)
  
-Effect.runPromise(runnable).then(console.log)
+// Effect.runPromise(runnable).then(console.log)

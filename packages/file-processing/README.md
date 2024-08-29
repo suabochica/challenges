@@ -23,7 +23,7 @@ Paquete que procesa un archivo `.csv`, recupera su contenido y lo expone a trav�
 
 La relación entre las carpetas es una secuencia como ilustra el siguiente diagrama:
 
-<!--[sequence](../../static/diagrams/01-sequence.puml)-->
+[![fp-sequence](https://tinyurl.com/2948vav7)](https://tinyurl.com/2948vav7)<!--![fp-sequence](../../static/diagrams/01-fp-sequence.puml)-->
 
 🔀 Endpoints
 ------------
