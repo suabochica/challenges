@@ -1,7 +1,7 @@
 {
   "name": "meli-challenge",
   "version": "1.0.0",
-  "description": "attend meli backend challenge",
+  "description": "Repository with several technical challenges",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/suabochica/meli-challenge",
     "keywords": [],
-    "author": "Sergio Benitez",
+    "author": "Sergio Benítez",
     "license": "ISC",
     "bugs": {
       "url": "git+https://github.com/suabochica/meli-challenge/issues"
@@ -25,6 +25,6 @@
     }
   },
   "keywords": [],
-  "author": "Sergio Benitez",
+  "author": "Sergio Benítez",
   "license": "ISC"
 }
