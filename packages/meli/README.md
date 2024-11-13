@@ -1,7 +1,7 @@
-![MercadoLibre](./static/imgs/00-meli.png "MercadoLibre")
-
 MeLi Challenge
 ==============
+
+![MercadoLibre](./static/imgs/00-meli.png "MercadoLibre")
 
 Monorepo con una solución al reto backend de mercado libre.
 
@@ -11,7 +11,7 @@ Monorepo con una solución al reto backend de mercado libre.
 - [nodejs](https://nodejs.org/en)
 - [docker](https://www.docker.com/): sistema operativo para contenedores
 - [docker compose](https://docs.docker.com/compose/): herramienta para definir aplicaciones con multiples contenedores.
-- [effect](https://effect.website/): un framework por construir aplicaciones con TypeScript. 
+- [effect](https://effect.website/): un framework por construir aplicaciones con TypeScript.
 
 ⚠️ Aviso
 -------

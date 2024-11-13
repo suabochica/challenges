@@ -3,7 +3,7 @@ import { Toaster, toast } from 'sonner'
 
 import './App.css'
 
-import { upload } from './services/upload';
+import { uploadService } from './services/upload';
 import { type Data } from './types';
 import { Search } from './ui/search';
 
@@ -47,7 +47,7 @@ function App() {
 
     setAppStatus(APP_STATUS.UPLOADING);
 
-    const [err, newData] = await upload(file);
+    const [err, newData] = await uploadService(file);
 
     console.log('New Data', newData);
 
