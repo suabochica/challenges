@@ -49,3 +49,4 @@ Frontend:
 - [React + SWC](https://react.dev), como biblioteca web UI.
 - [TypeScript](https://typescriptlang.com), como super conjunto de JavaScript para el manejo de tipos.
 - [Sonner](https://www.npmjs.com/package/sonner), como componente web para notificar los errores.
+- [useDebounce](https://usehooks.com/usedebounce), como hook personalizado para almacenar los parámetros de la búsqueda por un periodo de tiempo.

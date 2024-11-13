@@ -1,3 +1,4 @@
 packages:
   - "packages/meli/*"
-  - "packages/shawand/*"
+  - "packages/shawand/backend"
+  - "packages/shawand/frontend"
