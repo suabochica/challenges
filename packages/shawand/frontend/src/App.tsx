@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Toaster, toast } from 'sonner'
 
-import { upload } from './services/upload';
 import './App.css'
+
+import { upload } from './services/upload';
 import { type Data } from './types';
+import { Search } from './ui/search';
 
 const APP_STATUS = {
   IDLE: 'IDLE',
@@ -26,6 +28,7 @@ function App() {
   const [ file, setFile ] = useState<File | null>(null);
 
   const showButton = appStatus === APP_STATUS.READY_UPLOAD || appStatus === APP_STATUS.UPLOADING;
+  const showInput = appStatus !== APP_STATUS.SUCCESS
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const [ file ] = event.target.files ?? [];
@@ -67,24 +70,32 @@ function App() {
     <>
       <Toaster/>
       <h1>Challenge: Upload CSV + Search</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            disabled={appStatus === APP_STATUS.UPLOADING}
-            onChange={handleInputChange}
-            name="file"
-            type="file"
-            accept=".csv"
-          />
-        </label>
-        {showButton && (
-          <button
-            disabled={appStatus === APP_STATUS.UPLOADING}
-          >
-            {BUTTON_TEXT[appStatus]}
-          </button>
-        )}
-      </form> 
+      {showInput && (
+        <form onSubmit={handleSubmit}>
+          <label>
+            <input
+              disabled={appStatus === APP_STATUS.UPLOADING}
+              onChange={handleInputChange}
+              name="file"
+              type="file"
+              accept=".csv"
+            />
+          </label>
+          {showButton && (
+            <button
+              disabled={appStatus === APP_STATUS.UPLOADING}
+            >
+              {BUTTON_TEXT[appStatus]}
+            </button>
+          )}
+        </form> 
+      )}
+
+      {
+        appStatus === APP_STATUS.SUCCESS && (
+          <Search initialData={data}></Search>
+        )
+      }
     </>
   )
 }
