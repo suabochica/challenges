@@ -26,11 +26,11 @@
     "module": "NodeNext",
     "incremental": true,
     "paths": {
-      "file-processing/*": ["./packages/file-processing/src/*"],
-      "file-processing/": ["./packages/file-processing/src/main"],
+      "file-processing/*": ["./packages/meli-backend/file-processing/src/*"],
+      "file-processing/": ["./packages/meli-backend/file-processing/src/main"],
 
-      "meli-request/*": ["./packages/meli-request/src/*"],
-      "meli-request/": ["./packages/meli-request/src/main"],
+      "meli-request/*": ["./packages/meli-backend/meli-request/src/*"],
+      "meli-request/": ["./packages/meli-backend/meli-request/src/main"],
     },
     "plugins": [{ "name": "@effect/language-service" }]
   },

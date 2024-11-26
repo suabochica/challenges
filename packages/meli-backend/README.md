@@ -1,5 +1,5 @@
-MeLi Challenge
-==============
+MeLi Backend Challenge
+======================
 
 ![MercadoLibre](./static/imgs/00-meli.png "MercadoLibre")
 

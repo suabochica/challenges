@@ -1,4 +1,6 @@
 packages:
-  - "packages/meli/*"
+  - "packages/meli-backend/file-processing"
+  - "packages/meli-backend/meli-requests"
+  - "packages/meli-frontend"
   - "packages/shawand/backend"
   - "packages/shawand/frontend"
